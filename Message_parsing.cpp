@@ -19,7 +19,7 @@ private:
 
 DWORD readFromSerialPort(HANDLE hSerial, uint8_t* buffer, int buffersize)
 {
-    DWORD dwBytesRead = 0;
+    DWORD dwBytesRead = 8; //  Same as dcbSerialParams.ByteSize
     if (!ReadFile(hSerial, buffer, buffersize, &dwBytesRead, NULL)) {
         //handle error
         ErrorExit(GetProc);
@@ -34,12 +34,12 @@ DWORD readFromSerialPort(HANDLE hSerial, uint8_t* buffer, int buffersize)
 DWORD writeToSerialPort(HANDLE hSerial, uint8_t* data, int length)
 {
 
-    DWORD dwBytesRead = data;
+    DWORD dwBytesRead = 8; //  Same as dcbSerialParams.ByteSize
     if (!WriteFile(hSerial, data, length, &dwBytesRead, NULL)) {
         ErrorExit(GetProc);
     }
     else {
-        dwBytesRead = ReadFile(hSerial, buffer, buffersize, &dwBytesRead, NULL);
+        dwBytesRead = WriteFile(hSerial, data, length, &dwBytesRead, NULL);
     }
     return dwBytesRead;
 }

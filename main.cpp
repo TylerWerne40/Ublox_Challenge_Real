@@ -1,17 +1,6 @@
-#include <iostream>
-#include <tchar.h>
-#include <windows.h>
-#include <strsafe.h>
-#include <atlbase.h>
-#include <assert.h>
-#include <string.h>
 #include "QT_Challenge.hpp"
 
 using namespace std;
-
-
-
-
 
 int main(int argc, char** argv)
 {
