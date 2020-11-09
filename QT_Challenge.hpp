@@ -1,5 +1,4 @@
 // Header for QT challenge 
-// includes Message_Parsing.cpp
 
 //#include "Message_parsing.cpp"
 //#include "ErrorHandling.cpp"
@@ -12,14 +11,22 @@
 #include <string.h>
 
 
-LPTSTR GetProc = (TCHAR*)"GetProcessID";
+extern LPTSTR GetProc;
 
 // MessageParsing.cpp
 
-extern class Message_Class;
-extern DWORD readFromSerialPort(HANDLE hSerial, uint8_t* buffer, int buffersize);
-extern DWORD writeToSerialPort(HANDLE hSerial, uint8_t* data, int length);
-extern void closeSerialPort(HANDLE hSerial);
+class Message_Class
+{
+public:
+	uint8_t msg[8];
+	DWORD readFromSerialPort(HANDLE hSerial, uint8_t* buffer, int buffersize);
+	DWORD writeToSerialPort(HANDLE hSerial, uint8_t* data, int length);
+	void closeSerialPort(HANDLE hSerial);
+
+protected:
+
+private:
+};
 
 // ErrorHandling.cpp
 

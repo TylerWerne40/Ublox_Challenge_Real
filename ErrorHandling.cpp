@@ -1,5 +1,7 @@
-
 #include "QT_Challenge.hpp"
+
+
+LPTSTR GetProc = (TCHAR*)"GetProcessID";
 
 void ErrorExit(LPTSTR lpszFunction)
 {
@@ -32,4 +34,6 @@ void ErrorExit(LPTSTR lpszFunction)
     LocalFree(lpMsgBuf);
     LocalFree(lpDisplayBuf);
     ExitProcess(dw);
+
+    return;
 }

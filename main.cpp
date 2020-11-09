@@ -1,6 +1,9 @@
 #include "QT_Challenge.hpp"
 
-using namespace std;
+//using namespace std;
+
+Message_Class MESS;
+
 
 int main(int argc, char** argv)
 {
@@ -47,8 +50,36 @@ int main(int argc, char** argv)
         ErrorExit(GetProc);
     }
 
+    /*
+    Do Comms
+    */
+    uint8_t* buffer = MESS.msg;
+    int buffersize = 8;
+    DWORD read_flag;
+
+    while (TRUE) // Run Communications by polling
+    {
+        if (TRUE)
+        {
+            read_flag = MESS.readFromSerialPort(hSerial, buffer, buffersize);
+            if ((read_flag != 0))
+            {
+                printf("%c \n", MESS.msg);
+            }
+            /*
+            else if ((read_flag != 0) & (is_empty(msg)))
+            {
+                // End of file error
+            }
+            */
+            else
+            {
+                // Generic Error
+            }
+        }
+    }
 
     // End Program
-    closeSerialPort(hSerial);
+    MESS.closeSerialPort(hSerial);
     return 0;
-}
+};
